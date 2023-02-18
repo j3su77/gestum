@@ -1,0 +1,349 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+:root {
+  --header-height: 3.5rem; /*56px*/
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --hue: 152;
+  --primary-color: hsl(235deg 52% 33%);
+  --primary-color-alt: rgb(33, 40, 113);
+  --accent-color: rgb(45, 119, 255);
+  --accent-color-alt: hsl(var(--hue), 24%, 66%);
+  --title-color: hsl(var(--hue), 4%, 15%);
+  --text-color: hsl(var(--hue), 4%, 35%);
+  --text-color-light: hsl(var(--hue), 4%, 55%);
+  --body-color: #d4d4d4;
+  --container-color: #fff;
+  --main-color: rgb(207, 205, 209);
+  --blue-color: rgba(32, 48, 130, 1);
+  --disabled-color: rgb(177, 177, 177);
+  --white-color: #fff;
+  --text-light: #f1f1f1;
+  --main-color-transp: rgba(207, 205, 209, 0.6);
+  --glass-color: rgba(172, 167, 167, 0.2);
+
+  
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "roboto", sans-serif;
+  --urban-font: "Kalam", sans-serif;
+  --roboto-font: "Roboto", calibri, arial;
+  --big-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+
+  /*========== Font weight ==========*/
+  --font-thin: 300;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  /* margin: var(--header-height) 0 0 0; */
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: 0.4s; /*For animation dark mode*/
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+hr {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.primary-background {
+  background-color: primary;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+  padding: 5.5rem 0 1rem;
+}
+
+.section__title,
+.section__title-center {
+  font-size: var(--h1-font-size);
+  margin-bottom: var(--mb-0-75);
+  line-height: 140%;
+}
+
+.section__title-center {
+  text-align: center;
+}
+
+.container {
+  max-width: 968px;
+  margin-left: var(--mb-0-75);
+  margin-right: var(--mb-0-75);
+}
+
+.container_full {
+  min-height: calc(100vh - 55px);
+}
+
+.grid {
+  display: grid;
+}
+
+.main {
+  overflow: hidden; /*For animation*/
+}
+
+/*=============== BUTTONS ===============*/
+.button {
+  display: inline-block;
+  color: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: var(--font-medium);
+  transition: 0.3s;
+  width: max-content;
+  place-content: center;
+}
+
+.button:hover {
+  filter: brightness(75%);
+}
+
+.button:disabled,
+.button[disabled] {
+  cursor: not-allowed;
+  background-color: var(--disabled-color) !important;
+  color: #535353 !important;
+}
+.button__icon {
+  transition: 0.3s;
+}
+
+.button:hover .button__icon {
+  transform: translateX(0.25rem);
+}
+
+.button--flex {
+  display: inline-flex;
+  width: max-content;
+  height: fit-content;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.button--link {
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+}
+
+.button--link:hover .button__icon {
+  transform: translateX(0.25rem);
+}
+
+.normal--text {
+  font-size: var(--normal-font-size);
+}
+
+.small--text {
+  font-size: var(--small-font-size);
+}
+
+.flex--l {
+  justify-self: flex-start;
+}
+.flex--r {
+  justify-self: flex-end;
+}
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow {
+  -webkit-filter: drop-shadow(3px 3px 5px #111);
+  filter: drop-shadow(3px 3px 5px #111);
+}
+
+.divider {
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin-bottom: var(--mb-1);
+  background-color: var(--blue-color);
+}
+
+/*=============== Form styles ===============*/
+
+/*=============== SCROLL BAR ===============*/
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background: hsl(var(--hue), 4%, 53%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--hue), 4%, 29%);
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+}
+
+@media screen and (min-width: 667px) {
+  .container {
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
+  }
+  .button {
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 992px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .button {
+    padding: 0.8rem 1.4rem;
+  }
+
+  .section {
+    padding: 8rem 0 1rem;
+  }
+  .section__title,
+  .section__title-center {
+    font-size: var(--h1-font-size);
+  }
+}
+
+.fadeIn {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.menu__open {
+  overflow: hidden;
+}
+
+.error {
+  color: red;
+}
+
+.is-selected:after {
+  background-color: #1bcacd;
+  opacity: 1;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

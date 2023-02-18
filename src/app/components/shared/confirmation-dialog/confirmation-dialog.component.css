@@ -1,0 +1,24 @@
+.dialog_title {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-bottom: var(--mb-1);
+  
+}
+
+.dialog_message {
+  font-size: var(--h3-font-size);
+  color: var(--text-color);
+  margin-bottom: var(--mb-1);
+
+}
+
+.dialog_actions {
+  justify-content: flex-end !important;
+  padding-top: var(--mb-1);
+}
+
+.dialog_btn {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  margin-right: var(--mb-0-5);
+}

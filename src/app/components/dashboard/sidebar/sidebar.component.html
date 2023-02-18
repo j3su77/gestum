@@ -1,0 +1,26 @@
+<section [class.sidenav]="isExpanded">
+  <div class="toggle__menu">
+    <mat-icon *ngIf="isExpanded" (click)="toggleMenu.emit(null)">
+      close_fullscreen
+    </mat-icon>
+    <mat-icon class="icon__close" *ngIf="!isExpanded" (click)="toggleMenu.emit(null)">
+      dehaze
+    </mat-icon>
+  </div>
+
+  <mat-list class="nav" *ngFor="let route of menu">
+    <a mat-list-item routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
+      class="mat-list-item_hover" routerLink="{{ route.link }}" [style.height.px]="70">
+      <div class="item_menu">
+        <div class="item_menu-icon">
+          <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right"
+            [style.width.px]="40" [style.height.px]="40" class="icon__item-menu">
+            {{ route.icon }}</mat-icon>
+        </div>
+        <div class="item_menu-text">
+          <h3 matLine class="text_menu" *ngIf="isExpanded">{{ route.name }}</h3>
+        </div>
+      </div>
+    </a>
+  </mat-list>
+</section>

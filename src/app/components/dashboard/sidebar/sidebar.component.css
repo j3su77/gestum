@@ -1,0 +1,92 @@
+.sidenav {
+  width: 200px;
+  
+}
+.toggle__menu {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+.toggle:hover {
+  cursor: pointer;
+}
+.active-link {
+  background-color: #fafafa;
+  border-left: solid 3px #1976d2;
+  color: var(--primary-color) !important;
+}
+.active-link .mat-icon {
+  color: var(--primary-color);
+  font-size: 42px;
+  width: 42px;
+  height: 42px;
+}
+.active-link .text_menu  {
+  color: var(--primary-color) !important;
+}
+.nav .mat-list-item_hover {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-property: transform, border, background-color;
+}
+.nav .item_menu {
+  display: flex !important;
+
+
+}
+
+.nav .item_menu .item_menu-icon {
+   flex: 1 0 35%;;
+}
+
+.nav .item_menu .item_menu-text {
+  flex: 1 0 65%;
+  justify-self: center;
+  align-self: center;
+}
+
+.nav .item_menu-text h3 {
+  color: var(--text-color);
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+}
+.nav mat-list-item, .nav a {
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.nav mat-list-item:hover, .nav a:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+  border-left: solid 3px #1976d2;
+}
+.nav mat-icon {
+  color: var(--text-color);
+}
+
+mat-list {
+  padding: 0;
+  color: var(--text-light);
+}
+
+.icon__close {
+  justify-content: flex-start;
+}
+
+.mdc-list-item__content {
+  flex-direction: row;
+
+}
+
+.icon__item-menu {
+  font-size: 34px;
+  text-align: center;
+  align-items: center;
+}
+
+

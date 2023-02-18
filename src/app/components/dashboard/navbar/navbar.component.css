@@ -1,0 +1,17 @@
+
+
+.app__name {
+  color: var(--text-light);
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-medium);
+}
+
+.toolbar {
+  background-color: var(--primary-color);
+  height: 50px;
+}
+
+.btn_logout {
+  color: var(--text-light);
+}
+

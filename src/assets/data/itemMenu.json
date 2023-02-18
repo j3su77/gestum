@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Inicio",
+    "link": "/dashboard",
+    "icon": "home"
+  },
+  { 
+    "name": "Servicios",
+    "link": "/dashboard/servicios",
+    "icon": "handyman"
+  },
+  {
+    "name": "Solicitudes",
+    "link": "/dashboard/solicitudes",
+    "icon": "assignment"
+  },
+  {
+    "name": "Clientes",
+    "link": "/dashboard/clientes",
+    "icon": "people"
+  },
+  {
+    "name": "Ejecutores",
+    "link": "/dashboard/ejecutores",
+    "icon": "engineering"
+  }
+  
+]
