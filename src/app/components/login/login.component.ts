@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -6,6 +6,9 @@ import { UserService } from '../../services/user.service';
 import { ErrorService } from '../../services/error.service';
 import { LoginInfo } from '../../interfaces/loginUser';
 import { HttpErrorResponse } from '@angular/common/http';
+import jwt_decode from 'jwt-decode';
+import { User } from '../../interfaces/user';
+
 
 @Component({
   selector: 'app-login',
@@ -17,6 +20,8 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   loading: boolean = false;
+
+  
 
   constructor(
     private fb: FormBuilder,
@@ -31,8 +36,8 @@ export class LoginComponent {
     });
   }
 
+
   login() {
-    console.log(this.form.value.email);
     if (this.form.value.email == '' || this.form.value.password == '') {
       this._errorService.msgError({ e: 'Todos los campos son requeridos' });
       return;
@@ -45,10 +50,12 @@ export class LoginComponent {
 
     this.loading = true;
     this._userService.login(user).subscribe({
-      next: (data) => {
+      next: async (data) => {
+        const tokenPayload: any = jwt_decode(data);
+        const name = tokenPayload.name;
         localStorage.setItem('token', data);
-        this.router.navigate(['/dashboard']);
-        this._sanckBar.open(`Bienvenido al sistema, sr ${user.email}`, "",  {
+        await this.router.navigate(['/dashboard']);
+        this._sanckBar.open(`Bienvenido al sistema, sr ${name}`, "",  {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 5000,

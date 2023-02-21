@@ -1,8 +1,10 @@
 .mat-drawer[style*="visibility: hidden"] {
   visibility: visible !important;
-  display: block;
+  opacity: 1 !important;
+  display: block; 
   transition-duration: 400ms !important;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition: visibility 0s linear, opacity 0.3s linear !important;
 }
 .mat-drawer {
   transform: none !important;
