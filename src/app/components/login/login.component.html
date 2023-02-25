@@ -14,7 +14,7 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="login()" class="form_login">
+      <form [formGroup]="form" (ngSubmit)="onLogin()" class="form_login">
         <mat-form-field class="width80" appearance="outline">
           <mat-label>Correo</mat-label>
           <input
@@ -73,7 +73,7 @@
       </form>
     </mat-card-content>
     <mat-card-footer>
-      <p>No tienes cuenta <a href="#">Resgistrase</a></p>
+      <p>No tienes cuenta <a routerLink="/registrarse">Registrarse</a></p>
     </mat-card-footer>
   </mat-card>
 </div>

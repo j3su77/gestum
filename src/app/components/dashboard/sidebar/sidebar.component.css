@@ -1,33 +1,33 @@
 .sidenav {
-  width: 200px;
-  
+  width: 270px;
 }
 .toggle__menu {
   width: 100%;
-  height: 50px;
+  height: var(--header-height);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: var(--primary-color);
-  color: var(--text-light);
+  background-color: var(--white-color);
+  color: var(--primary-color);
 }
 .toggle:hover {
   cursor: pointer;
 }
 .active-link {
-  background-color: #fafafa;
+  background-color: var(--white-color);
   border-left: solid 3px #1976d2;
-  color: var(--primary-color) !important;
+  color: var(--accent-color) !important;
 }
+
 .active-link .mat-icon {
-  color: var(--primary-color);
-  font-size: 42px;
-  width: 42px;
-  height: 42px;
+  color: var(--accent-color) !important;
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
 }
 .active-link .text_menu  {
-  color: var(--primary-color) !important;
+  color: var(--accent-color) !important;
 }
 .nav .mat-list-item_hover {
   transition-duration: 400ms;
@@ -36,12 +36,18 @@
 }
 .nav .item_menu {
   display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
 
+.nav .active-link .item_menu {
+  background-color: var(--text-color-light);
+  border-radius: 7px;
 
 }
 
 .nav .item_menu .item_menu-icon {
-   flex: 1 0 35%;;
+   flex: 1 0  5%;;
 }
 
 .nav .item_menu .item_menu-text {
@@ -51,9 +57,16 @@
 }
 
 .nav .item_menu-text h3 {
-  color: var(--text-color);
-  font-size: var(--h3-font-size);
+  color: var(--primary-color) ;
+  font-size: 1rem;
   font-weight: var(--font-medium);
+  margin: 0 !important;
+}
+
+.nav .active-link h3 {
+  color: var(--primary-color) ;
+  font-size: 1rem;
+  font-weight: var(--font-semi-bold);
 }
 .nav mat-list-item, .nav a {
   border: none;
@@ -66,7 +79,8 @@
   border-left: solid 3px #1976d2;
 }
 .nav mat-icon {
-  color: var(--text-color);
+  color: var(--primary-color) !important;
+  font-size: 26px;
 }
 
 mat-list {
@@ -80,13 +94,13 @@ mat-list {
 
 .mdc-list-item__content {
   flex-direction: row;
-
 }
 
 .icon__item-menu {
-  font-size: 34px;
+  font-size: 26px;
   text-align: center;
   align-items: center;
+  padding-top: 10px;
 }
 
 

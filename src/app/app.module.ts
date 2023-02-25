@@ -9,6 +9,7 @@ import { AppComponent }             from './app.component';
 import { LoginComponent }           from './components/login/login.component';
 import { SharedModule }             from './components/shared/shared.module';
 import { AddTokenInterceptor }      from './utils/add-token.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -16,6 +17,7 @@ import { AddTokenInterceptor }      from './utils/add-token.interceptor';
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

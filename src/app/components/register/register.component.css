@@ -1,22 +1,26 @@
 
 
-.content_login {
+.content_register {
   display: flex;
   height: 100%;
   justify-content: center;
   align-items: center;
+  background-color: #FFFFFF;
+}
+
+.register_card {
+  width: 100%;
+  max-width: 650px;
+  text-align: center;
+  display: flex;
   background-color: var(--body-color);
 }
 
-.login_card {
-  width: 100%;
-  max-width: 350px;
-  text-align: center;
-  display: flex;
-  background-color: var(--white-color);
+.row {
+  margin-top: var(--mb-0-5);
 }
 
-.login_header {
+.register_header {
   text-align: center;
   width: 100%;
   display: flex;
@@ -25,7 +29,8 @@
   flex-direction: column;
 }
 
-.user-icon_login {
+
+.user-icon_register {
   width: 70px;
   height: 70px;
   color: var(--primary-color);
@@ -38,16 +43,11 @@
   margin-bottom: var(--mb-2);
 }
 
-.form_login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.form_register {
+  width: 100%;
 }
 
-mat-form-field {
-  margin-bottom: var(--mb-0-5);
-}
+
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
   background-color: #fff !important;
 }
@@ -58,7 +58,6 @@ mat-error {
 }
 
 mat-card-actions {
-  width: 100%;
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -70,9 +69,6 @@ mat-card-footer {
 }
 
 
-.width80 {
-  width: 80%;
-}
 .button {
   height: 50px;
 }

@@ -37,7 +37,7 @@ export class LoginComponent {
   }
 
 
-  login() {
+  onLogin() {
     if (this.form.value.email == '' || this.form.value.password == '') {
       this._errorService.msgError({ e: 'Todos los campos son requeridos' });
       return;
@@ -51,14 +51,15 @@ export class LoginComponent {
     this.loading = true;
     this._userService.login(user).subscribe({
       next: async (data) => {
-        const tokenPayload: any = jwt_decode(data);
-        const name = tokenPayload.name;
-        localStorage.setItem('token', data);
+        this._userService.setToken(data);
+        const user = await this._userService.getUserLogged(data);
+        console.log(user.role)
         await this.router.navigate(['/dashboard']);
-        this._sanckBar.open(`Bienvenido al sistema, sr ${name}`, "",  {
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          duration: 5000,
+        this._sanckBar.open(`Bienvenido al sistema, Sr(a) ${user.name}`, "",  {
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+          duration: 3000,
+          panelClass: ["success-snackbar"]
         })
       },
       error: (e: HttpErrorResponse) => {

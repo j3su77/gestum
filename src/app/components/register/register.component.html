@@ -1,0 +1,144 @@
+<div class="content_register">
+  <mat-card class="register_card">
+    <mat-card-header class="register_header">
+      <mat-card-title>
+        <h2 class="title">REGISTRARSE</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onRegister()" class="form_register">
+        <div class="row">
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Nombre Completo</mat-label>
+            <input
+              type="text"
+              formControlName="name"
+              matInput
+              autocomplete="off"
+            />
+            <mat-error
+              *ngIf="
+                form.get('name')?.hasError('required') &&
+                form.get('name')?.touched
+              "
+            >
+              Ingrese su nombre completo
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input
+              type="email"
+              formControlName="email"
+              matInput
+              autocomplete="off"
+            />
+            <mat-error
+              *ngIf="
+                form.get('email')?.hasError('required') &&
+                form.get('email')?.touched
+              "
+            >
+              Ingrese su correo
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('email')?.hasError('email') &&
+                form.get('email')?.touched
+              "
+            >
+              Ingrese un correo válido
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="col-sm-6" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input
+              [type]="!hide ? 'password' : 'text'"
+              formControlName="password"
+              matInput
+            />
+
+            <button
+              mat-icon-button
+              *ngIf="!form.get('password')?.hasError('required')"
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Mostrar contraseña'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon
+                *ngIf="!form.get('password')?.hasError('required')"
+                >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+              >
+            </button>
+
+            <mat-error
+              *ngIf="
+                form.get('password')?.hasError('required') &&
+                form.get('password')?.touched
+              "
+            >
+              Ingrese una contraseña
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-sm-6" appearance="outline">
+            <mat-label>Repetir Contraseña</mat-label>
+            <input type="password" formControlName="confirmPassword" matInput />
+            <mat-error
+              *ngIf="
+                form.get('confirmPassword')?.hasError('required') &&
+                form.get('confirmPassword')?.touched
+              "
+            >
+              repita la contraseña
+            </mat-error>
+            <mat-error
+              *ngIf="
+                form.get('confirmPassword')?.hasError('match') &&
+                form.get('confirmPassword')?.touched
+              "
+            >
+              las contraseñas no coinciden
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <br />
+        <mat-card-actions
+          class="row"
+          [matTooltip]="
+            form.invalid
+              ? 'Debe rellenar todos los campos para poder ingresar'
+              : ''
+          "
+        >
+          <button
+            *ngIf="!loading"
+            class="w-100 button"
+            type="submit"
+            [disabled]="form.invalid"
+            mat-raised-button
+            color="primary"
+          >
+            Ingresar
+          </button>
+          <mat-spinner
+            *ngIf="loading"
+            class="spinner"
+            diameter="50"
+          ></mat-spinner>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+    <mat-card-footer>
+      <p>Ya tengo una cuenta<a routerLink="/login">ingresar</a></p>
+    </mat-card-footer>
+  </mat-card>
+</div>

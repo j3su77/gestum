@@ -1,17 +1,20 @@
 
 
 .app__name {
-  color: var(--text-light);
-  font-size: var(--h2-font-size);
-  font-weight: var(--font-medium);
+  font-family: "Nunito", sans-serif;
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
 }
 
 .toolbar {
-  background-color: var(--primary-color);
-  height: 50px;
+  background-color: var(--white-color);
+  height: var(--header-height);
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
 }
 
 .btn_logout {
-  color: var(--text-light);
+  color: var(--primary-light);
 }
 

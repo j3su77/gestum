@@ -11,7 +11,7 @@
   <mat-list class="nav" *ngFor="let route of menu">
     <a mat-list-item routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"
       class="mat-list-item_hover" routerLink="{{ route.link }}" [style.height.px]="70">
-      <div class="item_menu">
+      <div class="item_menu" [style.paddingLeft.px]="isExpanded ? '28' : '14'">
         <div class="item_menu-icon">
           <mat-icon mat-list-icon [matTooltip]="!isExpanded ? route.name : ''" matTooltipPosition="right"
             [style.width.px]="40" [style.height.px]="40" class="icon__item-menu">
