@@ -12,6 +12,7 @@ import { ServicesComponent } from './servicios/services.component';
 import { RequestsComponent } from './requests/requests.component';
 import { ClientsComponent } from './clients/clients.component';
 import { EjecutoresComponent } from './ejecutores/ejecutores.component';
+import { LoadingService } from '../../services/loading.service';
 
 
 
@@ -34,5 +35,8 @@ import { EjecutoresComponent } from './ejecutores/ejecutores.component';
     SharedModule,
     DashboardRoutingModule,
   ],
+  providers: [
+    LoadingService
+  ]
 })
 export class DashboardModule { }

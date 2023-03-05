@@ -9,6 +9,7 @@
 }
 
 .toolbar {
+  position: relative;
   background-color: var(--white-color);
   height: var(--header-height);
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
@@ -18,3 +19,9 @@
   color: var(--primary-light);
 }
 
+mat-progress-bar {
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

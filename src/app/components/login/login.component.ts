@@ -8,6 +8,7 @@ import { LoginInfo } from '../../interfaces/loginUser';
 import { HttpErrorResponse } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
 import { User } from '../../interfaces/user';
+import { LoadingService } from '../../services/loading.service';
 
 
 @Component({
@@ -19,14 +20,14 @@ export class LoginComponent {
   form: FormGroup;
   email: string = '';
   password: string = '';
-  loading: boolean = false;
-
+  hide: boolean = false;
   
 
   constructor(
     private fb: FormBuilder,
     private _sanckBar: MatSnackBar,
     private router: Router,
+    public loadingService: LoadingService,
     private _userService: UserService,
     private _errorService: ErrorService
   ) {
@@ -48,9 +49,10 @@ export class LoginComponent {
       password: this.form.value.password,
     };
 
-    this.loading = true;
+    this.loadingService.show();
     this._userService.login(user).subscribe({
       next: async (data) => {
+        this.loadingService.hide();
         this._userService.setToken(data);
         const user = await this._userService.getUserLogged(data);
         console.log(user.role)
@@ -64,7 +66,7 @@ export class LoginComponent {
       },
       error: (e: HttpErrorResponse) => {
         this._errorService.msgError({ e });
-        this.loading = false;
+        this.loadingService.hide();
       },
     });
   }

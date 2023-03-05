@@ -4,16 +4,20 @@
       <mat-card-title>
         <!-- <img mat-card-avatar class="img__login" width="200px" src="./assets/images/user-icon.png" alt="" /> -->
 
-        <mat-icon
+        <div class="login-content-logo">
+          <mat-icon
           class="user-icon_login"
           color="primary"
-          svgIcon="my-user-icon"
-        ></mat-icon>
+          svgIcon="insitum-icon"
+          >
+        </mat-icon>
+        <h2> - Gestum</h2>
+        </div>
 
-        <h2 class="title">INICIAR SESIÓN</h2>
+        <h2 class="title">Iniciar Sesión</h2>
       </mat-card-title>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content class="card_content">
       <form [formGroup]="form" (ngSubmit)="onLogin()" class="form_login">
         <mat-form-field class="width80" appearance="outline">
           <mat-label>Correo</mat-label>
@@ -23,31 +27,40 @@
             matInput
             autocomplete="off"
           />
-          <mat-icon matPrefix>email</mat-icon>
-          <mat-error
-            *ngIf="
-              form.get('email')?.hasError('required') &&
-              form.get('email')?.touched
-            "
-          >
-            El email es requerido
+          <mat-icon matPrefix [ngClass]="{'error': form.get('email')?.touched && form.get('email')?.errors}">email</mat-icon>
+          <mat-error *ngIf="form.get('email')?.touched && form.get('email')?.errors">
+            {{ form.get('email')?.hasError('required') ? 'El email es requerido' : 'Debe ingresar un correo válido' }}
           </mat-error>
-          <mat-error
-            *ngIf="
-              form.get('email')?.hasError('email') && form.get('email')?.touched
-            "
-          >
-            Debe ingresar un correo válido
-          </mat-error>
+
         </mat-form-field>
 
         <mat-form-field class="width80" appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input type="password" formControlName="password" matInput />
-          <mat-icon matPrefix>lock</mat-icon>
+          <input   [type]="!hide ? 'password' : 'text'" formControlName="password" matInput />
+          <mat-icon [ngClass]="{'error': form.get('password')?.touched && form.get('password')?.errors}" matPrefix>lock</mat-icon>
+
+          <button
+          type="button"
+          mat-icon-button
+          *ngIf="!form.get('password')?.hasError('required')"
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Mostrar contraseña'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon
+          [style.fontSize.px]="20"
+          [style.marginTop.px]="3"
+          class="icon_eye"
+            *ngIf="!form.get('password')?.hasError('required')"
+            >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+          >
+        </button>
         </mat-form-field>
         <br />
         <mat-card-actions
+          matTooltipClass="tooltip"
+          matTooltipPosition="above"
           [matTooltip]="
             form.invalid
               ? 'Debe rellenar todos los campos para poder ingresar'
@@ -55,25 +68,26 @@
           "
         >
           <button
-            *ngIf="!loading"
+            *ngIf="!(loadingService.isLoading | async)"
             type="submit"
             [disabled]="form.invalid"
-            class="width80 button"
+            class="width80 button fadeIn"
             mat-raised-button
             color="primary"
           >
             Ingresar
           </button>
           <mat-spinner
-            *ngIf="loading"
+          *ngIf="loadingService.isLoading | async"
             class="spinner"
             diameter="50"
           ></mat-spinner>
         </mat-card-actions>
       </form>
     </mat-card-content>
-    <mat-card-footer>
-      <p>No tienes cuenta <a routerLink="/registrarse">Registrarse</a></p>
+    <mat-card-footer  class="width80">
+      <p *ngIf="loadingService.isLoading | async">&nbsp;</p>
+      <p  *ngIf="!(loadingService.isLoading | async)">No tienes cuenta <a routerLink="/registrarse">Registrarse</a></p>
     </mat-card-footer>
   </mat-card>
 </div>

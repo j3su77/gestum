@@ -14,8 +14,9 @@ body { margin: 0; font-family: "Open Sans",  "Helvetica Neue", sans-serif; }
   --primary-color-alt: #034261;
   --accent-color: #4154f1;
   --accent-color-alt: #2b3ff5;
+  --warn-color: #cc0000;
   --title-color: #023047;
-  --text-color: #899bbd;
+  --text-color: #505050;
   --text-color-light: #f6f9ff;
   --body-color: #f6f9ff;
   --main-color: rgb(207, 205, 209);
@@ -65,7 +66,7 @@ body { margin: 0; font-family: "Open Sans",  "Helvetica Neue", sans-serif; }
 @media screen and (min-width: 968px) {
   :root {
     --big-font-size: 3.5rem;
-    --h1-font-size: 2.25rem;
+    --h1-font-size: 1.8rem;
     --h2-font-size: 1.5rem;
     --h3-font-size: 1.25rem;
     --normal-font-size: 1rem;
@@ -333,7 +334,7 @@ img {
 }
 
 .error {
-  color: red;
+  color: var(--warn-color) !important;
 }
 
 .is-selected:after {
@@ -375,4 +376,18 @@ mat-sidenav[style] {
 
 .breadcrumb-item.active {
   color: var(--text-color);
+}
+
+mat-label {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+mdc-text-field--invalid mat-icon {
+  color: red !important;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: rgb(2, 48, 71);
+ 
 }

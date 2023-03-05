@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { LoadingService } from '../../../services/loading.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,8 +16,9 @@ export class NavbarComponent {
   @ViewChild('sidenav') sidenav: MatSidenav;
   menu: ItemMenu[] = [];
   isExpanded = true;
+  loading = true;
 
-  constructor(private router: Router, public dialogo: MatDialog) {}
+  constructor(public loadingService: LoadingService,private router: Router, public dialogo: MatDialog) {}
 
   ngOnInit() {}
 

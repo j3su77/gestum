@@ -5,3 +5,13 @@
   align-items: center;
 }
 
+.content_home {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.content_home .card {
+  margin-right: 2rem;
+}

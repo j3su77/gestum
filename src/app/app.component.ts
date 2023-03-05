@@ -13,5 +13,6 @@ export class AppComponent {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
     // Registrar el SVG personalizado con el nombre 'mi-svg'
     this.matIconRegistry.addSvgIcon('my-user-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/user-icon.svg'));
+    this.matIconRegistry.addSvgIcon('insitum-icon', this.domSanitizer.bypassSecurityTrustResourceUrl('assets/images/logo-insitum.svg'));
   }
 }

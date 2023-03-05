@@ -24,6 +24,7 @@ import { MatListModule }            from '@angular/material/list';
 import { MatTooltipModule }         from '@angular/material/tooltip';
 import { MatCardModule }            from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
@@ -52,7 +53,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatListModule,
     MatTooltipModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ],
   exports: [
     HttpClientModule,
@@ -70,7 +72,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatListModule,
     MatTooltipModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ], 
   entryComponents: [
     ConfirmationDialogComponent

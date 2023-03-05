@@ -5,7 +5,7 @@
   height: 100%;
   justify-content: center;
   align-items: center;
-  background-color: var(--body-color);
+  background-color: var(--primary-color);
 }
 
 .login_card {
@@ -13,7 +13,8 @@
   max-width: 350px;
   text-align: center;
   display: flex;
-  background-color: var(--white-color);
+  background-color: var(--body-color);
+  color: var(--text-color);
 }
 
 .login_header {
@@ -25,12 +26,24 @@
   flex-direction: column;
 }
 
-.user-icon_login {
-  width: 70px;
-  height: 70px;
-  color: var(--primary-color);
+.login-content-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--mb-1-5);
+  margin-right: 10px;
 }
 
+.login-content-logo h2 {
+  font-size: var(--h1-font-size);
+}
+
+.user-icon_login {
+  width: 50px;
+  height: 50px;
+  color: var(--primary-color);
+
+}
 
 .title {
   font-size: var(--h2-font-size);
@@ -52,8 +65,12 @@ mat-form-field {
   background-color: #fff !important;
 }
 
+mat-form-field mat-icon {
+  color: var(--primary-color);
+}
+
 mat-error {
-  font-size: var(--small-font-size);
+  font-size: var(--smaller-font-size);
   text-align: start;
 }
 
@@ -62,19 +79,36 @@ mat-card-actions {
   justify-self: center;
   display: flex;
   justify-content: center;
+  padding: 0 ;
+  margin: 0;
+}
+
+.tooltip {
+  margin: -20px;
+  font-weight: 700 !important;
+  font-size: var(--small-font-size) !important;
+}
+
+.card_content {
+  padding: 0 !important;
 }
 
 mat-card-footer {
-  margin: var(--mb-1) 0;
-  text-align: center;
+  margin: var(--mb-1) auto;
+  text-align: end;
+  padding-right: 15px;
+  font-size: var(--small-font-size);
 }
 
+.icon_eye {
+  color: var(--text-color) !important;
+}
 
 .width80 {
   width: 80%;
 }
 .button {
-  height: 50px;
+  height: 52px;
 }
 
 .spinner {
