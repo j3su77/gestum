@@ -108,8 +108,6 @@ $md-warn: (
 );
 
 
-
-
 // Palette color
 $md-palette-primary: mat.define-palette($md-primary);
 $md-palette-accent: mat.define-palette($md-accent);
@@ -123,10 +121,20 @@ $md-theme: mat.define-light-theme((
     primary: $md-palette-primary,
     accent: $md-palette-accent,
     warn: $md-palette-warn,
-  )
+    )
 ));
-
+    
 @include mat.all-component-themes($md-theme);
 
 
+$md-dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $md-palette-primary,
+    accent: $md-palette-accent,
+    warn: $md-palette-warn,
+  )
+));
 
+.darkMode {
+    @include mat.all-component-colors($md-dark-theme);
+  }

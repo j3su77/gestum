@@ -10,6 +10,7 @@ import { LoginComponent }           from './components/login/login.component';
 import { SharedModule }             from './components/shared/shared.module';
 import { AddTokenInterceptor }      from './utils/add-token.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { ThemeService } from './services/theme.service';
 
 
 
@@ -27,6 +28,7 @@ import { RegisterComponent } from './components/register/register.component';
     SharedModule,
   ],
   providers: [
+    ThemeService,
     { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

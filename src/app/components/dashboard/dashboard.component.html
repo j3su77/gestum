@@ -1,12 +1,12 @@
-<mat-sidenav-container class="dark-theme" >
+<mat-sidenav-container>
   <mat-sidenav class="fadeIn" #sidenav [style.width.px]="isExpanded ? 270 : 70" fixedInViewport="true" mode="side" opened="{{ isExpanded }}" >
     <app-sidebar (toggleMenu)="toggleMenu()" [isExpanded]="isExpanded"></app-sidebar>
   </mat-sidenav>
 
   <mat-sidenav-content [style.margin-left.px]="!isExpanded ? 70 : 270">
-    <div class="content-container ">
+    <div class="content-container">
       <app-navbar></app-navbar>
-      <div class="container_full">
+      <div class="container_full fadeIn">
         <router-outlet></router-outlet>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { AuthGuard } from '../../utils/auth.guard';
 import { RequestsComponent } from './requests/requests.component';
 import { ClientsComponent } from './clients/clients.component';
 import { EjecutoresComponent } from './ejecutores/ejecutores.component';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: "solicitudes", component: RequestsComponent},
     {path: "clientes", component: ClientsComponent},
     {path: "ejecutores", component: EjecutoresComponent},
+    {path: "cuenta", component: AccountComponent},
 
     { path: '**', redirectTo: '', pathMatch: 'full'},
   ], canActivate: [AuthGuard]}

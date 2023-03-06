@@ -1,12 +1,15 @@
-<h1 mat-dialog-title class="dialog_title">Confirmación</h1>
+<div class="dialog_content">
+  <h1 mat-dialog-title class="dialog_title">Confirmación</h1>
 
+  <div mat-dialog-content>
+    <p class="dialog_message">{{ mensaje }}</p>
+  </div>
+  <mat-divider></mat-divider>
 
-<div mat-dialog-content>
-    <p  class="dialog_message">{{mensaje}}</p> 
-</div>
-<mat-divider></mat-divider>
-
-<div mat-dialog-actions class="dialog_actions">
+  <div mat-dialog-actions class="dialog_actions">
     <button mat-button class="dialog_btn" (click)="closed()">Cancelar</button>
-    <button mat-button class="dialog_btn" (click)="confirmed()" cdkFocusInitial>Aceptar</button>
+    <button mat-button class="dialog_btn" (click)="confirmed()" cdkFocusInitial>
+      Aceptar
+    </button>
+  </div>
 </div>

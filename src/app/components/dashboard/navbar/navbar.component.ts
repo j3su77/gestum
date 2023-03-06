@@ -5,6 +5,16 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import { LoadingService } from '../../../services/loading.service';
+import { FormControl } from '@angular/forms';
+import { ThemeService } from '../../../services/theme.service';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../interfaces/user';
+
+
+type options = {
+  event: MatSlideToggleChange | boolean
+}
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +27,17 @@ export class NavbarComponent {
   menu: ItemMenu[] = [];
   isExpanded = true;
   loading = true;
+  isDarkTheme: boolean = false;
+  user: User
 
-  constructor(public loadingService: LoadingService,private router: Router, public dialogo: MatDialog) {}
+  constructor(private themeService: ThemeService, public loadingService: LoadingService,private router: Router, public dialogo: MatDialog,  private _userService: UserService) {
+  
+  }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.isDarkTheme = (localStorage.getItem("isDark") === "true") || false;
+    this.user = await this._userService.getUserLogged(this._userService.getToken()!);
+  }
 
   waitConfirmation() {
     this.dialogo
@@ -33,6 +50,11 @@ export class NavbarComponent {
           this.logOut();
         }
       });
+  }
+
+  async toggleDarkMode(event: boolean) {
+    this.isDarkTheme = event;
+    await this.themeService.setDarkMode(this.isDarkTheme);
   }
 
   logOut() {

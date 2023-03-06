@@ -13,8 +13,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { ClientsComponent } from './clients/clients.component';
 import { EjecutoresComponent } from './ejecutores/ejecutores.component';
 import { LoadingService } from '../../services/loading.service';
-
-
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -28,6 +27,7 @@ import { LoadingService } from '../../services/loading.service';
     RequestsComponent,
     ClientsComponent,
     EjecutoresComponent,
+    AccountComponent,
   ],
 
   imports: [

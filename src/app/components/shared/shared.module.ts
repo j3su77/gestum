@@ -25,6 +25,10 @@ import { MatTooltipModule }         from '@angular/material/tooltip';
 import { MatCardModule }            from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatMenuModule} from '@angular/material/menu'; 
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+
+
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
@@ -54,7 +58,9 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatTooltipModule,
     MatCardModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule,
+    MatCheckboxModule
   ],
   exports: [
     HttpClientModule,
@@ -73,7 +79,9 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatTooltipModule,
     MatCardModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatMenuModule,
+    MatCheckboxModule
   ], 
   entryComponents: [
     ConfirmationDialogComponent

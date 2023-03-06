@@ -8,14 +8,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: var(--white-color);
+  background-color: var(--body-color-alt);
   color: var(--primary-color);
 }
 .toggle:hover {
   cursor: pointer;
 }
 .active-link {
-  background-color: var(--white-color);
+  background-color: var(--body-color-alt);
   border-left: solid 3px #1976d2;
   color: var(--accent-color) !important;
 }
@@ -41,9 +41,8 @@
 }
 
 .nav .active-link .item_menu {
-  background-color: var(--text-color-light);
+  background-color: var(--body-color);
   border-radius: 7px;
-
 }
 
 .nav .item_menu .item_menu-icon {
@@ -75,7 +74,7 @@
 }
 .nav mat-list-item:hover, .nav a:hover {
   cursor: pointer;
-  background-color: #fafafa;
+  background-color: var(--body-color);
   border-left: solid 3px #1976d2;
 }
 .nav mat-icon {

@@ -9,7 +9,7 @@
 .mat-drawer {
   transform: none !important;
   border: none;
-  background-color: var(--white-color);
+  background-color: var(--body-color-alt);
   
   transition-duration: 400ms !important;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
