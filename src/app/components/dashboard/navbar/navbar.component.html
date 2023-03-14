@@ -1,40 +1,52 @@
-<mat-toolbar class="toolbar" >
-	<div class="toolbar_content">
-		<h1 class="app__name fadeIn">GESTUM</h1>
+<mat-toolbar class="toolbar"  [class.expanded]="getIsExpanded()">
+  <div
+    class="toolbar_content"
+  >
+    <div class="d-flex align-items-center">
+      <button *ngIf="isMobile && !getIsExpanded()" mat-menu-item (click)="toggleMenu()">
+				<mat-icon class="icon__close">
+					dehaze
+				</mat-icon>
+      </button>
+      <h1 class="app__name fadeIn" *ngIf="!isMobile || !getIsExpanded()">GESTUM</h1>
+    </div>
 
-	
-		<button mat-icon-button [matMenuTriggerFor]="menu">
-			<mat-icon [style.width.px]="26" [style.height.px]="26" [style.fontSize.px]="22">settings</mat-icon>
-		</button>
-		<mat-menu #menu="matMenu" class="mat-menu">
-			<button *ngIf="user" mat-menu-item disabled>
-				<ng-container>
-					<span>{{user.name}} {{ user.lastName}}</span>
-				</ng-container>
-			</button>
-			<mat-divider></mat-divider>
-			<button mat-menu-item routerLink="/dashboard/cuenta">
-				<mat-icon>manage_accounts</mat-icon>
-				<span>Cuenta</span>
-			</button>
-	
-			<button mat-menu-item (click)="toggleDarkMode(!isDarkTheme)">
-		
-				<mat-icon>{{ isDarkTheme ? "light_mode" : "dark_mode" }}</mat-icon>
-				<span *ngIf="isDarkTheme">Activar tema claro</span>
-				<span *ngIf="!isDarkTheme">Activar tema oscuro</span>
-			</button>
-		
-			<mat-divider></mat-divider>
-				<button mat-menu-item (click)="waitConfirmation()" class="btn_logout">
-					<mat-icon>logout</mat-icon>
-					<span>Cerrar sesión</span>
-				</button>
-	
-		</mat-menu>
-		
-	
-	
-		<mat-progress-bar mode="indeterminate" *ngIf="loadingService.isLoading | async"></mat-progress-bar>
-	</div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="btn_setting">
+      <mat-icon
+        [style.width.px]="26"
+        [style.height.px]="26"
+        [style.fontSize.px]="22"
+        >settings</mat-icon
+      >
+    </button>
+
+    <mat-menu #menu="matMenu" class="mat-menu">
+      <div class="mat-menu-infouser" *ngIf="user">
+        <mat-icon class="me-3" color="accent">assignment_ind</mat-icon>
+        <span>{{ user.nombre }} {{ user.apellidos }}</span>
+      </div>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/dashboard/cuenta">
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Cuenta</span>
+      </button>
+
+      <button mat-menu-item (click)="toggleDarkMode(!isDarkTheme)">
+        <mat-icon>{{ isDarkTheme ? "light_mode" : "dark_mode" }}</mat-icon>
+        <span *ngIf="isDarkTheme">Activar tema claro</span>
+        <span *ngIf="!isDarkTheme">Activar tema oscuro</span>
+      </button>
+
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="waitConfirmation()" class="btn_logout">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
+
+    <mat-progress-bar
+      mode="indeterminate"
+      *ngIf="loadingService.isLoading | async"
+    ></mat-progress-bar>
+  </div>
 </mat-toolbar>

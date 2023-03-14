@@ -2,9 +2,332 @@
   <h2>Cuenta</h2>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a> </li>
-        <li class="breadcrumb-item active">Cuenta</li>
+      <li class="breadcrumb-item"><a routerLink="/dashboard">Inicio</a></li>
+      <li class="breadcrumb-item active">Cuenta</li>
     </ol>
   </nav>
 </div>
-<p>account works!</p>
+<div class="">
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <!----------------- TAB - Mostrar Información --------------------->
+    <mat-tab label="Información">
+      <div class="tab-pane fadeIn container">
+        <div *ngIf="user" class="card">
+          <div class="card-body pt-3">
+            <h5 class="card-title mb-3 mt-2">Información de mi cuenta</h5>
+
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Nombres:</div>
+              <div class="col-lg-9 col-md-8">{{ user.nombre }}</div>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Apellidos:</div>
+              <div class="col-lg-9 col-md-8">{{ user.apellidos }}</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Tipo de documento:</div>
+              <div class="col-lg-9 col-md-8">
+                {{ getTipoDocumentoCompleto(user.tipo_documento) }}
+              </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Documento:</div>
+              <div class="col-lg-9 col-md-8">{{ user.documento }}</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Correo:</div>
+              <div class="col-lg-9 col-md-8">{{ user.correo }}</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Teléfono:</div>
+              <div class="col-lg-9 col-md-8">{{ user.telefono }}</div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="row">
+              <div class="col-lg-3 col-md-4 label">Dirección:</div>
+              <div class="col-lg-9 col-md-8">Ludhiana, Punjab, India</div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <!----------------- TAB - Editar Información --------------------->
+    <mat-tab label="Editar Información">
+      <form
+        class="container fadeIn"
+        [formGroup]="formUpdateUser"
+        (ngSubmit)="onUpdateUser()"
+      >
+        <div *ngIf="user" class="card">
+          <div class="card-body pt-3">
+            <h5 class="card-title mb-3 mt-2">
+              Editar información de mi cuenta
+            </h5>
+
+            <div class="row">
+              <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100 m-auto">
+                  <mat-label>Nombres</mat-label>
+                  <input
+                    formControlName="nombre"
+                    matInput
+                    placeholder="Ingrese su nombre"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Apellidos</mat-label>
+                  <input
+                    formControlName="apellidos"
+                    matInput
+                    placeholder="Ingrese sus apellidos"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100 m-auto">
+                  <mat-label>Tipo de Documento:</mat-label>
+                  <mat-select formControlName="tipo_documento">
+                    <mat-option
+                      *ngFor="let type of typesDocs"
+                      [value]="type.value"
+                    >
+                      {{ type.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Documento</mat-label>
+                  <input
+                    matInput
+                    formControlName="documento"
+                    placeholder="Ingrese su N° de documento"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100 m-auto">
+                  <mat-label>Correo</mat-label>
+                  <input
+                    matInput
+                    formControlName="correo"
+                    placeholder="Ingrese su Correo"
+                  />
+                  <mat-error
+                    *ngIf="
+                      formUpdateUser.get('correo')?.touched &&
+                      formUpdateUser.get('correo')?.errors
+                    "
+                  >
+                    {{
+                      formUpdateUser.get("correo")?.hasError("required")
+                        ? "El correo es requerido"
+                        : "Debe ingresar un correo válido"
+                    }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Teléfono</mat-label>
+                  <input
+                    matInput
+                    formControlName="telefono"
+                    placeholder="Ingrese su N° de telefono"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- <div class="col-md-6 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Dirección</mat-label>
+                  <input
+                    matInput
+                    formControlName="direccion"
+                    placeholder="Ingrese la dirección"
+                  />
+                </mat-form-field>
+              </div> -->
+              <!-- <div class="col-md-6d-flex justify-content-end"> -->
+                <div class="col-12 d-flex justify-content-end">
+                <button
+                  type="submit"
+                  [disabled]="formUpdateUser.invalid"
+                  class="w-100 button fadeIn"
+                  mat-raised-button
+                  color="primary"
+                >
+                  Actualizar Datos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+    <!----------------- TAB - Cambiar Contraseña --------------------->
+    <mat-tab label="Cambiar Contraseña">
+      <form
+        class="container fadeIn"
+        [formGroup]="formUpdatePassword"
+        (ngSubmit)="onUpdatePassword()"
+      >
+        <div *ngIf="user" class="card">
+          <div class="card-body pt-3">
+            <h5 class="card-title mb-3 mt-2">
+              Cambiar contraseña de mi cuenta
+            </h5>
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Contraseña actual</mat-label>
+                  <input
+                    matInput
+                    type="password"
+                    formControlName="current_password"
+                    placeholder="Ingrese la contraseña actual de su cuenta"
+                  />
+                  <mat-error
+                  *ngIf="
+                    formUpdatePassword.get('current_password')?.touched &&
+                    formUpdatePassword.get('current_password')?.errors
+                  "
+                >
+                <mat-icon>error</mat-icon>
+                  {{
+                    formUpdatePassword
+                      .get("current_password")
+                      ?.hasError("required")
+                      && "La contraseña actual es requerida"
+                  }}
+                </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Nueva contraseña</mat-label>
+                  <input
+                    matInput
+                    type="password"
+                    formControlName="new_password"
+                    placeholder="Ingrese la nueva contraseña"
+                  />
+                  <mat-error
+                    *ngIf="
+                      formUpdatePassword.get('new_password')?.touched &&
+                      formUpdatePassword.get('new_password')?.errors
+                    "
+                  >
+                  <mat-icon>error</mat-icon>
+                    {{
+                      formUpdatePassword
+                        .get("new_password")
+                        ?.hasError("required")
+                        ? "La nueva contraseña es requerida"
+                        : formUpdatePassword
+                            .get("new_password")
+                            ?.hasError("minlength")
+                        ? "La contraseña debe contener al menos 5 caracteres"
+                        : "La contraseña debe contener maximo 20 caracteres"
+                    }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <mat-form-field class="w-100">
+                  <mat-label>Repetir nueva contraseña</mat-label>
+                  <input
+                    matInput
+                    [type]="!hidePass ? 'password' : 'text'"
+                    formControlName="rep_new_password"
+                    placeholder="Repita nuevamente la nueva contraseña"
+                  />
+
+                  <button
+                    type="button"
+                    mat-icon-button
+                    *ngIf="
+                      !formUpdatePassword
+                        .get('rep_new_password')
+                        ?.hasError('required')
+                    "
+                    matSuffix
+                    (click)="hidePass = !hidePass"
+                    [attr.aria-label]="'Mostrar contraseña'"
+                    [attr.aria-pressed]="hidePass"
+                  >
+                    <mat-icon
+                      *ngIf="
+                        !formUpdatePassword
+                          .get('rep_new_password')
+                          ?.hasError('required')
+                      "
+                      >{{
+                        hidePass ? "visibility_off" : "visibility"
+                      }}</mat-icon
+                    >
+                  </button>
+                  <mat-error
+                    *ngIf="
+                      formUpdatePassword.get('rep_new_password')?.touched &&
+                      formUpdatePassword.get('rep_new_password')?.errors
+                    "
+                  >
+                    <mat-icon class="error">error</mat-icon>
+                    {{
+                      formUpdatePassword
+                        .get("rep_new_password")
+                        ?.hasError("required")
+                        ? "Debe repetir la nueva contraseña"
+                        : "Las contraseñas deben coincidir"
+                    }}
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <button
+                  type="submit"
+                  [disabled]="formUpdatePassword.invalid"
+                  class="button btn_change-password"
+                  mat-raised-button
+                  color="primary"
+                >
+                  Cambiar contraseña
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>

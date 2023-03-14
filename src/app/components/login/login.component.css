@@ -28,6 +28,7 @@
 
 .login-content-logo {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: var(--mb-1-5);

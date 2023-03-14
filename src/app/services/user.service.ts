@@ -6,11 +6,15 @@ import { User } from '../interfaces/user';
 import { LoginInfo } from '../interfaces/loginUser';
 import jwt_decode from 'jwt-decode';
 
+
+interface data {
+  msg: string
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
-
-
 
 export class UserService {
   private myAppUrl: string;
@@ -18,27 +22,24 @@ export class UserService {
 
   constructor(private http: HttpClient) { 
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = "api/user/";
+    this.myApiUrl = "api/users/";
   }
 
-  signIn(user: User): Observable<any> {
-    return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, user)
+ 
+  getInfoUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}${id}`)
   }
 
-  login(userLogin: LoginInfo): Observable<string> {
-    return this.http.post<string>(`${this.myAppUrl}${this.myApiUrl}login`, userLogin)
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.myAppUrl}${this.myApiUrl}${id}`, user)
   }
 
-  setToken(token: string) {
-    localStorage.setItem("token", token);
-  }
-  getToken() {
-    return localStorage.getItem("token");
+  updatePassword(id: number, data: any): Observable<data> {
+    return this.http.put<data>(`${this.myAppUrl}${this.myApiUrl}${id}/change-password`, data)
   }
 
-  getUserLogged(token: string): User {
-    const user: User = jwt_decode(token);
-    console.log(user);
-    return user;
+  getUsers(tipo: string): Observable<User[]>{
+    return this.http.get<User[]>(`${this.myAppUrl}${this.myApiUrl}?type=${tipo}`)
   }
+  
 }

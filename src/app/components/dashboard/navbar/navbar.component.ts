@@ -10,11 +10,12 @@ import { ThemeService } from '../../../services/theme.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../interfaces/user';
-
+import { AuthService } from '../../../services/auth.service';
+import { ErrorService } from '../../../services/error.service';
 
 type options = {
-  event: MatSlideToggleChange | boolean
-}
+  event: MatSlideToggleChange | boolean;
+};
 
 @Component({
   selector: 'app-navbar',
@@ -22,21 +23,33 @@ type options = {
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-
   @ViewChild('sidenav') sidenav: MatSidenav;
   menu: ItemMenu[] = [];
-  isExpanded = true;
   loading = true;
   isDarkTheme: boolean = false;
-  user: User
+  user: User;
+  public isMobile = false;
 
-  constructor(private themeService: ThemeService, public loadingService: LoadingService,private router: Router, public dialogo: MatDialog,  private _userService: UserService) {
   
+  constructor(
+    private themeService: ThemeService,
+    public loadingService: LoadingService,
+    private router: Router,
+    public dialogo: MatDialog,
+    private _authService: AuthService,
+    private _themeService: ThemeService
+  ) {
+    
   }
 
   async ngOnInit() {
-    this.isDarkTheme = (localStorage.getItem("isDark") === "true") || false;
-    this.user = await this._userService.getUserLogged(this._userService.getToken()!);
+    this.isDarkTheme = localStorage.getItem('isDark') === 'true' || false;
+    const user = await this._authService.getUserLogged();
+    this.user = user!;
+
+    this._themeService.isMobile$.subscribe((isMobile) => {
+      this.isMobile = isMobile;
+    });
   }
 
   waitConfirmation() {
@@ -47,7 +60,7 @@ export class NavbarComponent {
       .afterClosed()
       .subscribe((confirmed: Boolean) => {
         if (confirmed) {
-          this.logOut();
+          this._authService.logOut();
         }
       });
   }
@@ -57,8 +70,11 @@ export class NavbarComponent {
     await this.themeService.setDarkMode(this.isDarkTheme);
   }
 
-  logOut() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+  toggleMenu() {
+     this.themeService.toggleMenu();
+  }
+
+  getIsExpanded() {
+   return this.themeService.getIsExpanded();
   }
 }

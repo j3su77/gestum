@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import jwt_decode from 'jwt-decode';
 import { User } from '../../interfaces/user';
 import { LoadingService } from '../../services/loading.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class LoginComponent {
     private _sanckBar: MatSnackBar,
     private router: Router,
     public loadingService: LoadingService,
-    private _userService: UserService,
+    private _authService: AuthService,
     private _errorService: ErrorService
   ) {
     this.form = this.fb.group({
@@ -50,16 +51,16 @@ export class LoginComponent {
     };
 
     this.loadingService.show();
-    this._userService.login(user).subscribe({
+    this._authService.login(user).subscribe({
       next: async (data) => {
         this.loadingService.hide();
-        this._userService.setToken(data);
-        const user = await this._userService.getUserLogged(data);
-        console.log(user.role)
+        this._authService.setToken(data);
+        const user = await this._authService.getUserLogged();
+
         await this.router.navigate(['/dashboard']);
-        this._sanckBar.open(`Bienvenido al sistema, Sr(a) ${user.name}`, "",  {
+        this._sanckBar.open(`Bienvenido al sistema, Sr(a) ${user!.nombre} ${user!.apellidos}`, "cerrar",  {
           horizontalPosition: 'end',
-          verticalPosition: 'bottom',
+          verticalPosition: 'top',
           duration: 3000,
           panelClass: ["success-snackbar"]
         })

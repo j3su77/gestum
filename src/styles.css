@@ -141,6 +141,41 @@ img {
   background-color: primary;
 }
 
+.mat-mdc-tab-body-content {
+  display: flex;
+  justify-content: center;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--body-color-alt);
+}
+
+mat-error {
+  display: flex;
+}
+
+.mat-mdc-menu-content, .mdc-list {
+  padding: 0 !important;
+ }
+ 
+
+.mat-mdc-form-field-error {
+  font-size: var(--small-font-size);
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--mb-0-5);
+  padding: 0;
+}
+
+.mat-mdc-form-field-error .mat-icon {
+ color: var(--error-color) !important;
+ font-size: var(--normal-font-size);
+ text-align: center;
+ place-items: center;
+}
+
+
 /*=============== THEME ===============*/
 /*========== Variables Dark theme ==========*/
 .dark-theme-colors {
@@ -166,13 +201,60 @@ dark-theme-colors img {
 }
 
 .dark-theme-colors mat-icon {
-  color: var(--accent-color) !important;
+  color: var(--accent-color) ;
 }
 .dark-theme-colors .container_full {
   background-color: var(--body-color);
 }
 
+.dark-theme-colors mat-tab-group {
+  color: var(--text-color) !important;
+}
 
+.dark-theme-colors mdc-tab-labels {
+  color: var(--text-color-alt) !important;
+}
+.dark-theme-colors .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--body-color-alt);
+  color: var(--text-color) !important;
+}
+
+.dark-theme-colors .mdc-menu-surface--open {
+  background-color: var(--body-color-alt);
+  color: var(--text-color) !important;
+}
+
+.dark-theme-colors .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input,
+.dark-theme-colors .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__select,
+.dark-theme-colors .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label ,
+.dark-theme-colors .mat-mdc-select-min-line, .dark-theme-colors .mdc-list-item__primary-text,
+.dark-theme-colors .mat-mdc-select-arrow {
+  color: var(--text-color) !important;
+
+}
+
+
+.dark-theme-colors input::placeholder{
+  color: var(--text-color-alt) !important;
+  font-weight: var(--font-medium);
+}
+
+.dark-theme-colors .mat-mdc-form-field-error,
+.dark-theme-colors .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--error-color) !important;
+}
+
+
+
+
+.mat-mdc-tab span {
+  color: var(--text-color-alt) !important;
+  font-weight: bold;
+}
+
+.mdc-tab-indicator__content--underline {
+  border-color: var(--primary-color) !important;
+}
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
@@ -199,7 +281,10 @@ dark-theme-colors img {
 .container_full {
   min-height: calc(100vh - 40px);
   padding: 70px 16px 0 16px;
+  background-color: var(--body-color);
 }
+
+
 
 
 

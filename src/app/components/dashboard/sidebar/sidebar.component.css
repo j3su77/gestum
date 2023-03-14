@@ -102,4 +102,17 @@ mat-list {
   padding-top: 10px;
 }
 
+.app__name {
+  font-family: "Nunito", sans-serif;
+  color: var(--accent-color) !important;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.logo_mobile {
+  height: var(--header-height);
+}
+
+
 

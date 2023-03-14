@@ -39,4 +39,6 @@ import { AccountComponent } from './account/account.component';
     LoadingService
   ]
 })
-export class DashboardModule { }
+export class DashboardModule { 
+ 
+}

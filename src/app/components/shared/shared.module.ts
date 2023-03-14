@@ -27,6 +27,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select'; 
+import {MatPaginatorModule} from '@angular/material/paginator'; 
+
 
 
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
@@ -60,7 +64,10 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatDialogModule,
     MatProgressBarModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatPaginatorModule
   ],
   exports: [
     HttpClientModule,
@@ -81,7 +88,10 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MatDialogModule,
     MatProgressBarModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatPaginatorModule
   ], 
   entryComponents: [
     ConfirmationDialogComponent
