@@ -100,7 +100,7 @@ export class AccountComponent implements OnInit {
   }
 
   getTipoDocumentoCompleto(tipoDoc: Tipo_doc): string {
-    return (Tipo_doc as unknown as Record<Tipo_doc, string>)[tipoDoc];
+    return this._userService.getTipoDocumentoCompleto(tipoDoc);
   }
 
   onUpdateUser() {

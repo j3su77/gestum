@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Open Sans",  "Helvetica Neue", sans-serif; }
-
-
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
 
 :root {
   --header-height: 60px;
@@ -19,16 +22,13 @@ body { margin: 0; font-family: "Open Sans",  "Helvetica Neue", sans-serif; }
   --text-color: #505050;
   --text-color-alt: #727272;
   --body-color: #f6f9ff;
-  --main-color: rgb(207, 205, 209);
+  --main-color: #023047;
   --blue-color: rgba(32, 48, 130, 1);
   --disabled-color: rgb(177, 177, 177);
   --body-color-alt: #fff;
   --text-light: #f1f1f1;
   --success-color: #198754;
   --error-color: #dc3545;
-
-
-  
 
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
@@ -154,10 +154,39 @@ mat-error {
   display: flex;
 }
 
-.mat-mdc-menu-content, .mdc-list {
+.mat-mdc-menu-content,
+.mdc-list {
   padding: 0 !important;
- }
- 
+}
+
+table {
+  margin-bottom: var(--mb-0-5);
+}
+
+.table-board th {
+  background-color: var(--main-color) !important;
+  color: white !important;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+table,
+.mdc-data-table__cell {
+  color: var(--text-color) !important;
+  font-size: var(--small-font-size);
+}
+
+tbody {
+background-color: var(--body-color-alt) !important;
+}
+
+
+mat-paginator {
+  background-color: var(--body-color-alt) !important  ;
+  color: var(--text-color) !important;
+}
+
+
 
 .mat-mdc-form-field-error {
   font-size: var(--small-font-size);
@@ -169,12 +198,11 @@ mat-error {
 }
 
 .mat-mdc-form-field-error .mat-icon {
- color: var(--error-color) !important;
- font-size: var(--normal-font-size);
- text-align: center;
- place-items: center;
+  color: var(--error-color) !important;
+  font-size: var(--normal-font-size);
+  text-align: center;
+  place-items: center;
 }
-
 
 /*=============== THEME ===============*/
 /*========== Variables Dark theme ==========*/
@@ -188,7 +216,6 @@ mat-error {
   --text-color: #ebebeb;
   --text-color-alt: #c2c2c2;
   --body-color: #2b2b2b;
-  --main-color: rgb(207, 205, 209);
   --disabled-color: rgb(177, 177, 177);
   --body-color-alt: #1e1e1e;
   --text-light: #f1f1f1;
@@ -201,7 +228,7 @@ dark-theme-colors img {
 }
 
 .dark-theme-colors mat-icon {
-  color: var(--accent-color) ;
+  color: var(--accent-color);
 }
 .dark-theme-colors .container_full {
   background-color: var(--body-color);
@@ -224,28 +251,45 @@ dark-theme-colors img {
   color: var(--text-color) !important;
 }
 
-.dark-theme-colors .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input,
-.dark-theme-colors .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__select,
-.dark-theme-colors .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label ,
-.dark-theme-colors .mat-mdc-select-min-line, .dark-theme-colors .mdc-list-item__primary-text,
+.dark-theme-colors
+  .mdc-text-field:not(.mdc-text-field--disabled)
+  .mdc-text-field__input,
+.dark-theme-colors
+  .mdc-text-field:not(.mdc-text-field--disabled)
+  .mdc-text-field__select,
+.dark-theme-colors
+  .mdc-text-field:not(.mdc-text-field--disabled)
+  .mdc-floating-label,
+.dark-theme-colors .mat-mdc-select-min-line,
+.dark-theme-colors .mdc-list-item__primary-text,
 .dark-theme-colors .mat-mdc-select-arrow {
   color: var(--text-color) !important;
-
 }
 
-
-.dark-theme-colors input::placeholder{
+.dark-theme-colors input::placeholder {
   color: var(--text-color-alt) !important;
   font-weight: var(--font-medium);
 }
 
 .dark-theme-colors .mat-mdc-form-field-error,
-.dark-theme-colors .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+.dark-theme-colors
+  .mdc-text-field--invalid:not(.mdc-text-field--disabled)
+  .mdc-floating-label {
   color: var(--error-color) !important;
+}
+
+mat-card {
+  background-color: var(--body-color-alt) !important  ;
+  color: var(--text-color) !important;
 }
 
 
 
+  .card-header-content
+  .mdc-text-field--filled:not(.mdc-text-field--disabled),
+.card-header-content .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: var(--body-color) !important  ;
+}
 
 .mat-mdc-tab span {
   color: var(--text-color-alt) !important;
@@ -276,17 +320,18 @@ dark-theme-colors img {
   max-width: 968px;
   margin-left: var(--mb-0-75);
   margin-right: var(--mb-0-75);
-} 
-
-.container_full {
-  min-height: calc(100vh - 40px);
-  padding: 70px 16px 0 16px;
-  background-color: var(--body-color);
 }
 
+.container_full{
+  min-height: calc(100vh - 40px);
+  width: 100%;
+  padding: 70px 16px 0 16px;
 
+}
 
-
+.mat-drawer-container {
+  background-color: var(--body-color) !important;
+}
 
 .grid {
   display: grid;
@@ -395,10 +440,7 @@ dark-theme-colors img {
   background: #023047;
 }
 
-
-
 @media screen and (min-width: 667px) {
-
   .button {
     padding: 0.4rem 0.8rem;
   }
@@ -463,12 +505,9 @@ dark-theme-colors img {
   opacity: 1;
 }
 
-
-
 .spacer {
   flex: 1 1 auto;
 }
-
 
 mat-sidenav[style] {
   visibility: visible !important;
@@ -493,7 +532,6 @@ mat-sidenav-container {
 .error-snackbar .mdc-snackbar__surface {
   background: var(--error-color) !important;
 }
-
 
 .page_title h2 {
   font-size: 24px;
@@ -520,7 +558,7 @@ mdc-text-field--invalid mat-icon {
 }
 
 .mat-menu {
-  background-color:var(--body-color) !important;
+  background-color: var(--body-color) !important;
   color: var(--text-color) !important;
 }
 

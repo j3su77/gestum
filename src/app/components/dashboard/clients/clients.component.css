@@ -1,30 +1,102 @@
 table {
   width: 100%;
+  height: min-content;
 }
 .card-header-content {
-  width: 100%; 
+  width: 100%;
   display: flex;
-  justify-content: space-between; 
-  align-items: center;
+  justify-content: space-between;
 }
-.mat-mdc-form-field  {
+
+.mat-mdc-form-field {
   width: 100% !important;
 }
 .btn-add {
   width: fit-content;
+  height: 56px;
+  background-color: var(--accent-color) !important;
   margin-left: 10px;
-  height: 40px;
+  color: white !important;
+  font-weight: var(--font-semi-bold) !important;
+  box-shadow: none !important;
 }
 
-.btnEdit, 
+.btn-add mat-icon {
+  color: white !important;
+}
+
+.btnEdit,
 .btnDelete {
   cursor: pointer;
 }
 
-.btnEdit {
-  color: #376bcd;
+.mat-mdc-cell.mat-column-acciones {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 12px;
+  height: inherit;
 }
 
-.btnDelete {
-  color: red;
+.mat-cell {
+  height: 80px;
+  font-size: var(--h3-font-size);
+  justify-self: center;
+}
+.label {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.tab-pane .row {
+  margin: 0.3rem;
+}
+
+.user_details_content {
+  background-color: var(--body-color-alt) !important;
+}
+
+.tab-pane {
+  margin: var(--mb-0-5);
+}
+
+.detail-row,
+.expanded-row {
+  height: 0;
+  background-color: var(--body-color) !important;
+}
+
+.expanded-row {
+  border-top: 2px solid var(--primary-color) ;
+  border-left: 2px solid var(--primary-color) ;
+  border-right: 2px solid var(--primary-color) ;
+}
+
+.detail-row {
+  border-bottom: 2px solid var(--primary-color) ;
+  border-left: 2px solid var(--primary-color) ;
+  border-right: 2px solid var(--primary-color) ;
+}
+
+tr.element-row:not(.expanded-row):hover, .expanded-row:hover {
+  background-color: rgba(51, 51, 51, 0.116);
+  color: var(--title-color);
+  cursor: pointer;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.element-description {
+  padding: 16px;
+}
+
+.element-description-attribution {
+  opacity: 0.5;
 }

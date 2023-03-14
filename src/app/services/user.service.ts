@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
-import { User } from '../interfaces/user';
+import { User, Tipo_doc } from '../interfaces/user';
 import { LoginInfo } from '../interfaces/loginUser';
 import jwt_decode from 'jwt-decode';
 
@@ -25,6 +25,9 @@ export class UserService {
     this.myApiUrl = "api/users/";
   }
 
+  getTipoDocumentoCompleto(tipoDoc: Tipo_doc): string {
+    return (Tipo_doc as unknown as Record<Tipo_doc, string>)[tipoDoc];
+  }
  
   getInfoUser(id: number): Observable<User> {
     return this.http.get<User>(`${this.myAppUrl}${this.myApiUrl}${id}`)
